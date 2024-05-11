@@ -6,6 +6,7 @@ file = 'raw_data/OECD.SDD.NAD.SEEA,DSD_AIR_TRANSPORT@DF_AIR_TRANSPORT,1.0+all.cs
 
 data = pd.read_csv(file)
 #time period Observation value
+
 excluded_from_list = ['Time period', 'Observation value', 'OBS_STATUS', 'Observation status']
 
 data.drop(excluded_from_list, axis=1, inplace=True)
@@ -50,7 +51,7 @@ sns.countplot(data=data_top_20, x='REF_AREA', order=top_20_ref_areas)
 
 # Add title and axis labels
 plt.title('Number of Observations by Top 20 Reference Areas')
-plt.xlabel('Reference Area')
+plt.xlabel('Reference area')
 plt.ylabel('Count')
 
 plt.xticks(rotation=45)
@@ -60,7 +61,7 @@ plt.tight_layout()
 plt.savefig('graphs/observation_areas.png', dpi=300) 
 
 plt.figure(figsize=(8, 6))
-sns.countplot(data=data, x='FREQ')
+sns.countplot(data=data, x='Frequency of observation')
 
 # Add title and axis labels
 plt.title('Count of Frequency')
@@ -72,7 +73,7 @@ plt.tight_layout()
 plt.savefig('graphs/frequency.png', dpi=300) 
 
 plt.figure(figsize=(8, 6))
-sns.countplot(data=data, x='FLIGHT_TYPE')
+sns.countplot(data=data, x='Flight type')
 
 # Add title and axis labels
 plt.title('Count of Flight Types')
@@ -87,7 +88,7 @@ data['TIME_PERIOD'] = pd.to_datetime(data['TIME_PERIOD'])
 
 # Create the line plot
 plt.figure(figsize=(12, 8))
-sns.lineplot(data=data, x='TIME_PERIOD', y='REF_AREA')
+sns.lineplot(data=data, x='TIME_PERIOD', y='Reference area')
 
 # Add title and axis labels
 plt.title('Number of Observations by Reference Area Over Time')
